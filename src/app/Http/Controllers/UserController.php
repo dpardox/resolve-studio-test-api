@@ -16,34 +16,17 @@ class UserController extends Controller {
     }
 
     public function store(Request $request) {
-        // $user = new User();
-        // $user->name = $request->input('name');
-        // $user->email = $request->input('email');
-        // $user->password = bcrypt('superadmin');
-        // $user->save();
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
 
-        // $teacher = new Teacher;
-        // $teacher->classroom()->associate($request->input('classroom'));
-        // $teacher->duration = $request->input('duration');
-        // $teacher->save();
-
-        // $teacher->subjects()->attach($request->input('subjects'));
-
-        // $user = new User;
-        // $user->teacher()->associate($teacher);
-        // $user->document()->associate($request->input('document_type'));
-        // $user->document = $request->input('document');
-        // $user->name = $request->input('name');
-        // $user->lastname = $request->input('lastname');
-        // $user->email = $request->input('email');
-        // $user->password = bcrypt($request->input('password'));
-        // $user->save();
-
-        // return redirect()->route('teachers.index');
+        return response()->json($user);
     }
 
     public function show(User $user) {
-        //
+        return response()->json($user);
     }
 
     public function edit(User $user) {
@@ -51,7 +34,17 @@ class UserController extends Controller {
     }
 
     public function update(Request $request, User $user) {
-        //
+        $user = User::find($user->id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        if ($request->input('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        $user->save();
+
+        return response()->json($user);
     }
 
     public function destroy(User $user) {
