@@ -17,3 +17,5 @@ Route::namespace('Auth')->prefix('password')->group(function () {
     Route::get('find/{token}', 'PasswordResetController@find');
     Route::post('reset', 'PasswordResetController@reset');
 });
+
+Route::resource('users', 'UserController');

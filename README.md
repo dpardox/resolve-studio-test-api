@@ -16,6 +16,12 @@
 
 > Ejecute `docker-compose up --build` si cambia cualquier archivo de Docker.
 
+- Ejecute `docker-compose exec app bash` para entrar a la terminal del contenedor de Laravel.
+
+- Ejecute `php artisan migrate:refresh --seed` para correr las migraciones y semillas de la base de datos.
+
+- Ejecute `php artisan passport:install` para crear las llaves de encripción necesarias para generar los tokens de acceso.
+
 ## Detener
 
 - Ejecute `docker-compose stop` para **detener** los contenedores.
