@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends zip unzip git c
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install extensions
-# RUN docker-php-ext-install pdo_pgsql pgsql
-# RUN docker-php-ext-install gd
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+RUN docker-php-ext-install pdo pdo_pgsql pgsql
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
