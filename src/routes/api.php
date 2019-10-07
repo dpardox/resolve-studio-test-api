@@ -11,3 +11,9 @@ Route::prefix('auth')->group(function () {
         Route::get('user', 'AuthController@user');
     });
 });
+
+Route::namespace('Auth')->prefix('password')->group(function () {
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}', 'PasswordResetController@find');
+    Route::post('reset', 'PasswordResetController@reset');
+});
