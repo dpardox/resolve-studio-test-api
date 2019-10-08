@@ -6,11 +6,13 @@
 
 - Descargue o clone este repositorio GIT en su máquina local.
 
-- Copie el archivo `~/src/.env.example` y nobrelo `.env`, ajuste las variables de entorno según corresponda.
+- Copie el archivo `.env.example` y nombrelo `.env`, ajuste las variables de entorno si es necesario.
+
+- Copie el archivo `src/.env.example` y nombrelo `.env`, ajuste las variables de entorno si es necesario.
 
 - Ejecute una terminal y cambie el directorio a la raíz de este proyecto.
 
-## Entorno de desarrollo
+## Entorno
 
 - Ejecute `docker-compose up` para iniciar los **contenedores de Docker** *(espere mientras se completa la ejecución del comando)*, al terminar, se tendrá un servidor local disponible en `http://localhost/`.
 

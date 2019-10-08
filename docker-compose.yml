@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
   app:
-    image: ${AUTHOR}/${PROJECT_NAME}:app
-    container_name: ${PROJECT_NAME}-app
+    image: ${AUTHOR}/${PROJECT}:app
+    container_name: ${PROJECT}-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,7 +20,7 @@ services:
 
   webserver:
     image: nginx:1.17.4-alpine
-    container_name: ${PROJECT_NAME}-webserver
+    container_name: ${PROJECT}-webserver
     volumes:
       - ./src:/var/www
       - ./nginx:/etc/nginx/conf.d
@@ -35,7 +35,7 @@ services:
 
   db:
     image: postgres:12.0
-    container_name: ${PROJECT_NAME}-db
+    container_name: ${PROJECT}-db
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
