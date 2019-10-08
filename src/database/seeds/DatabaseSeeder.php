@@ -6,5 +6,6 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         // factory(App\User::class)->create();
         $this->call(UserTableSeeder::class);
+        $this->call(CompanyTableSeeder::class);
     }
 }

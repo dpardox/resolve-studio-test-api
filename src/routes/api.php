@@ -19,3 +19,5 @@ Route::namespace('Auth')->prefix('password')->group(function () {
 });
 
 Route::resource('users', 'UserController');
+
+Route::resource('companies', 'CompanyController');
