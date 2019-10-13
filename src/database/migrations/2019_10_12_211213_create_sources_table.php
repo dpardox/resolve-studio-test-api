@@ -4,20 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration {
+class CreateSourcesTable extends Migration {
 
     public function up() {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('sources', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('address');
-            $table->string('phone');
+            $table->integer('company_id')->unsigned();
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('sources');
     }
 
 }

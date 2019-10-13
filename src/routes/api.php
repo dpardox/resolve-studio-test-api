@@ -21,3 +21,7 @@ Route::namespace('Auth')->prefix('password')->group(function () {
 Route::resource('users', 'UserController');
 
 Route::resource('companies', 'CompanyController');
+
+// Sources
+Route::get('sources', 'SourceController@list');
+Route::post('sources', 'SourceController@store');
