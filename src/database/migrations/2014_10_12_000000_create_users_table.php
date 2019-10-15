@@ -12,6 +12,7 @@ class CreateUsersTable extends Migration {
             $table->string('lastname');
             $table->string('phone');
             $table->date('birthday')->nullable();
+            $table->enum('role', ['superadmin', 'admin']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -20,6 +20,7 @@ class UserController extends Controller {
         $user->lastname = $request->input('lastname');
         $user->phone = $request->input('phone');
         $user->birthday = Carbon::parse($request->input('birthday'))->toDateString();
+        $user->role = $request->input('role');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
@@ -38,6 +39,7 @@ class UserController extends Controller {
         $user->lastname = $request->input('lastname');
         $user->phone = $request->input('phone');
         $user->birthday = Carbon::parse($request->input('birthday'))->toDateString();
+        $user->role = $request->input('role');
         $user->email = $request->input('email');
 
         if ($request->input('password')) {
