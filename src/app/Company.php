@@ -10,4 +10,8 @@ class Company extends Model {
         return $this->hasMany('App\Source');
     }
 
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
 }

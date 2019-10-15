@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Source;
 use App\SourceData;
+use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class SourceController extends Controller {
 
@@ -101,5 +103,12 @@ class SourceController extends Controller {
     public function destroy(Source $source) {
         $source->delete();
         return response()->json($source);
+    }
+
+    public function admin(User $user) {
+        $sources = Source::whereHas('company', function (Builder $query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->with('company')->orderBy('id','desc')->get();
+        return response()->json($sources);
     }
 }
