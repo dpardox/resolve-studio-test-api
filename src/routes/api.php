@@ -25,3 +25,4 @@ Route::resource('companies', 'CompanyController');
 // Sources
 Route::get('sources', 'SourceController@list');
 Route::post('sources', 'SourceController@store');
+Route::get('sources/{source}', 'SourceController@show');

@@ -6,6 +6,7 @@ use App\Source;
 use App\SourceData;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SourceController extends Controller {
 
@@ -82,7 +83,19 @@ class SourceController extends Controller {
     }
 
     public function show(Source $source) {
-        return response()->json($source);
+        $sessions = DB::select(DB::raw("select sum(session) from source_data where source_id = {$source->id}"));
+        $conversions = DB::select(DB::raw("select sum(conversion) from source_data where source_id = {$source->id}"));
+        $campaigns = DB::select(DB::raw("select campaign as name, sum(session) as session, sum(conversion) as conversion from source_data where source_id = {$source->id} group by campaign"));
+        $sources = DB::select(DB::raw("select source as name, sum(session) as session, sum(conversion) as conversion from source_data where source_id = {$source->id} group by source"));
+
+        return response()->json([
+            'indicators' => [
+                'sessions' => $sessions[0]->sum,
+                'conversions' => $conversions[0]->sum
+            ],
+            'campaigns' => $campaigns,
+            'sources' => $sources,
+        ]);
     }
 
     public function destroy(Source $source) {
