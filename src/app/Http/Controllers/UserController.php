@@ -11,30 +11,28 @@ class UserController extends Controller {
         return response()->json($users);
     }
 
-    public function create() {
-        //
-    }
+    public function create() { }
 
     public function store(Request $request) {
         $user = new User();
         $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return response()->json($user);
+        return response()->json($user, 201);
     }
 
     public function show(User $user) {
         return response()->json($user);
     }
 
-    public function edit(User $user) {
-        //
-    }
+    public function edit(User $user) { }
 
     public function update(Request $request, User $user) {
         $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
 
         if ($request->input('password')) {
